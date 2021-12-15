@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://wheel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://car.gd" type="Script" id=2]
+[ext_resource path="res://black.tres" type="Material" id=3]
+
+[sub_resource type="ConvexPolygonShape" id=1]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="PrismMesh" id=3]
+
+[node name="VehicleBody" type="VehicleBody"]
+mass = 163.265
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1.34056, 0, 0, 0, 0.185658, 0, 0, 0, 1, -0.0274242, 0.311624, 0.0334306 )
+shape = SubResource( 1 )
+
+[node name="body" type="MeshInstance" parent="CollisionShape"]
+transform = Transform( 1.38304, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape/body"]
+transform = Transform( 0.57415, 0, 0, 0, 1.6047, 0, 0, 0, 1, -0.337735, 2.28281, 0 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Camera1" type="Camera" parent="."]
+transform = Transform( -1.12083e-07, 0.687962, -0.725747, -1.18239e-07, 0.725747, 0.687962, 1, 1.62921e-07, 2.84217e-14, -2.85094, 2.78918, 0 )
+
+[node name="Camera2" type="Camera" parent="."]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -0.259621, 0.890312, 0 )
+
+[node name="VehicleWheel4" type="VehicleWheel" parent="."]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -1.2261, 0, 1 )
+use_as_traction = true
+wheel_roll_influence = 0.0
+wheel_friction_slip = 1.0
+suspension_travel = 0.1
+suspension_stiffness = 50.0
+
+[node name="MeshInstance4" parent="VehicleWheel4" instance=ExtResource( 1 )]
+transform = Transform( -8.14603e-08, 0.1, -8.14603e-08, 0, -1.62921e-08, -0.5, -0.5, -1.62921e-08, 1.32716e-14, 0, 0, 0 )
+material/0 = ExtResource( 3 )
+
+[node name="VehicleWheel3" type="VehicleWheel" parent="."]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 1.226, 0, 1 )
+use_as_steering = true
+wheel_roll_influence = 0.0
+wheel_friction_slip = 1.0
+suspension_travel = 0.1
+suspension_stiffness = 50.0
+
+[node name="MeshInstance" parent="VehicleWheel3" instance=ExtResource( 1 )]
+transform = Transform( -8.14603e-08, 0.1, -8.14603e-08, 0, -1.62921e-08, -0.5, -0.5, -1.62921e-08, 1.32716e-14, 0, 0, 0 )
+material/0 = ExtResource( 3 )
+
+[node name="VehicleWheel2" type="VehicleWheel" parent="."]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -1.226, 0, -1 )
+use_as_traction = true
+wheel_roll_influence = 0.0
+wheel_friction_slip = 1.0
+suspension_travel = 0.1
+suspension_stiffness = 50.0
+
+[node name="MeshInstance2" parent="VehicleWheel2" instance=ExtResource( 1 )]
+transform = Transform( -8.14603e-08, 0.1, -8.14603e-08, 0, -1.62921e-08, -0.5, -0.5, -1.62921e-08, 1.32716e-14, 0, 0, 0 )
+material/0 = ExtResource( 3 )
+
+[node name="VehicleWheel" type="VehicleWheel" parent="."]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 1.226, 0, -1 )
+use_as_steering = true
+wheel_roll_influence = 0.0
+wheel_friction_slip = 1.0
+suspension_travel = 0.1
+suspension_stiffness = 50.0
+
+[node name="MeshInstance3" parent="VehicleWheel" instance=ExtResource( 1 )]
+transform = Transform( -8.14603e-08, 0.1, -8.14603e-08, 0, -1.62921e-08, -0.5, -0.5, -1.62921e-08, 1.32716e-14, 0, 0, 0 )
+material/0 = ExtResource( 3 )
